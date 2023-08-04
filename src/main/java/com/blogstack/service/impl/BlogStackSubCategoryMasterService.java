@@ -109,6 +109,7 @@ public class BlogStackSubCategoryMasterService implements IBlogStackSubCategoryM
 
         if (blogStackCategoryMasterOptional.isEmpty())
             throw new BlogStackDataNotFoundException(BlogStackMessageConstants.INSTANCE.DATA_NOT_FOUND);
+
         Set<BlogStackSubCategoryMaster> blogStackSubCategoryMasterList = blogStackCategoryMasterOptional.get().getBlogStackSubCategoryMasterList();
         LOGGER.warn("BlogStackSubcategoryMasterList :: {}", blogStackSubCategoryMasterList);
 

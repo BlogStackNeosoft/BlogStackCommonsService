@@ -19,5 +19,4 @@ public enum SubCategoryMasterStatusEnum {
     public static List<String> getAllValues() {
         return List.of(SubCategoryMasterStatusEnum.values()).stream().map(data -> data.value).collect(Collectors.toList());
     }
-
 }

@@ -15,7 +15,6 @@ public interface IBlogStackSubCategoryMasterEntityPojoMapper {
             .addedOn(blogStackSubcategoryMaster.getBsscmCreatedDate())
             .build();
 
-
     public static Function<Set<BlogStackSubCategoryMaster>, Set<SubCategoryMasterResponseBean>> mapSubcategoryMasterEntityListToPojoListMapping = blogStackSubcategoryMasterList -> blogStackSubcategoryMasterList.stream()
             .map(blogStackSubcategoryMaster -> {
                 SubCategoryMasterResponseBean.SubCategoryMasterResponseBeanBuilder subCategoryMasterResponseBeanBuilder = SubCategoryMasterResponseBean.builder();

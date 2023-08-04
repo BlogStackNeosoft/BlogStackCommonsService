@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 public interface IBlogStackCategoryMasterService {
     ResponseEntity<ServiceResponseBean> addCategory(CategoryMasterRequestBean categoryMasterRequestBean);
 
-
     ResponseEntity<ServiceResponseBean> fetchAllCategories(Integer page, Integer size);
 
     ResponseEntity<ServiceResponseBean> fetchCategoryById(String categoryId);
