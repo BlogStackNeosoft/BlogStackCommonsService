@@ -17,6 +17,7 @@
 		<java.version>20</java.version>
 		<mapstruct.version>1.5.5.Final</mapstruct.version>
 		<mapstruct-processor.version>1.5.5.Final</mapstruct-processor.version>
+		<commons-collections4.version>4.4</commons-collections4.version>
 		<springdoc-openapi-starter-webmvc-api.version>2.0.3</springdoc-openapi-starter-webmvc-api.version>
 		<springdoc-openapi-starter-webmvc-ui.version>2.0.3</springdoc-openapi-starter-webmvc-ui.version>
 	</properties>
@@ -67,6 +68,11 @@
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct-processor</artifactId>
 			<version>${mapstruct-processor.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>${commons-collections4.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
