@@ -23,6 +23,7 @@ public interface IBlogStackCategoryMasterEntityPojoMapper {
                 CategoryMasterResponseBean.CategoryMasterResponseBeanBuilder categoryMasterResponseBeanBuilder = CategoryMasterResponseBean.builder();
                 categoryMasterResponseBeanBuilder.categoryId(blogStackCategoryMaster.getBscmCategoryId())
                         .category(blogStackCategoryMaster.getBscmCategory())
+                        .blogStackSubCategory(blogStackCategoryMaster.getBlogStackSubCategoryMasterList() == null ? new HashSet<SubCategoryMasterResponseBean>() : IBlogStackSubCategoryMasterEntityPojoMapper.mapSubcategoryMasterEntityListToPojoListMapping.apply(blogStackCategoryMaster.getBlogStackSubCategoryMasterList()))
                         .status(blogStackCategoryMaster.getBscmStatus())
                         .addedOn(blogStackCategoryMaster.getBscmCreatedDate());
                 return categoryMasterResponseBeanBuilder.build();

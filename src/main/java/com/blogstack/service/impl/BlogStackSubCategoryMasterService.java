@@ -57,19 +57,15 @@ public class BlogStackSubCategoryMasterService implements IBlogStackSubCategoryM
 
         subCategoryMasterRequestBean.setSubCategoryId(subCategoryId);
         subCategoryMasterRequestBean.setCreatedBy(springApplicationName);
+        BlogStackSubCategoryMaster blogStackSubCategoryMaster = IBlogStackSubCategoryMasterPojoEntityMapper.INSTANCE.subCategoryMasterRequestToSubcategoryMasterEntity(subCategoryMasterRequestBean);
         Optional<BlogStackCategoryMaster> blogStackCategoryMasterOptional = this.blogStackCategoryMasterRepository.findByBscmCategoryId(categoryId);
         LOGGER.warn("BlogStackCategoryMasterOptional :: {}", blogStackCategoryMasterOptional);
-
-        BlogStackSubCategoryMaster blogStackSubCategoryMaster = IBlogStackSubCategoryMasterPojoEntityMapper.INSTANCE.subCategoryMasterRequestToSubcategoryMasterEntity(subCategoryMasterRequestBean);
 
         if (blogStackCategoryMasterOptional.isEmpty())
             throw new BlogStackDataNotFoundException(BlogStackMessageConstants.INSTANCE.DATA_NOT_FOUND);
 
-
-        Optional<BlogStackCategoryMaster> blogStackCategorySubcategoryMasterOptional = blogStackCategoryMasterOptional.map(category -> {
-            category.getBlogStackSubCategoryMasterList().add(blogStackSubCategoryMaster);
-            return this.blogStackCategoryMasterRepository.saveAndFlush(category);
-        });
+        blogStackCategoryMasterOptional.get().getBlogStackSubCategoryMasterList().add(blogStackSubCategoryMaster);
+        this.blogStackCategoryMasterRepository.saveAndFlush(blogStackCategoryMasterOptional.get());
 
         return Optional.of(ServiceResponseBean.builder().status(Boolean.TRUE).data(IBlogStackSubCategoryMasterEntityPojoMapper.mapSubCategoryMasterEntityPojoMapping.apply(blogStackSubCategoryMaster)).build());
     }
