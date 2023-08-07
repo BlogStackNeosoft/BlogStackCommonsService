@@ -24,14 +24,14 @@ public class BlogStackEmailService implements IBlogStackEmailService {
     private Logger LOGGER = LoggerFactory.getLogger(BlogStackEmailService.class);
 
     @Override
-    public ServiceResponseBean sendSignupMail(String to) {
+    public ServiceResponseBean sendSignupMail(String to , String firstName) {
         try {
             MimeMessage message = mailSender.createMimeMessage();
             message.setFrom("blogstack12@gmail.com");
             message.setRecipient(MimeMessage.RecipientType.TO ,new InternetAddress(to));
             String subject = "New SignUp to BlogStack";
             message.setSubject(subject);
-            message.setContent(blogStackCommonEmailUtil.getHtmlTemplate(to),"text/html; charset=utf-8");
+            message.setContent(blogStackCommonEmailUtil.getHtmlTemplate(firstName),"text/html; charset=utf-8");
             mailSender.send(message);
             return ServiceResponseBean.builder().status(Boolean.TRUE).message(BlogStackMessageConstants.INSTANCE.EMAIL_SENT_SUCCESSFULLY).build();
         }

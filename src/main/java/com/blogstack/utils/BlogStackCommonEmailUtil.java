@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class BlogStackCommonEmailUtil {
 
-    public String getHtmlTemplate(String to){
+    public String getHtmlTemplate(String firstName){
         String htmlTemplate="<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
                 "<head>\n" +
@@ -64,6 +64,7 @@ public class BlogStackCommonEmailUtil {
                 "            <span style=\"color: black; font-family: monospace;\">Blog</span><span style=\"color: red;font-family: monospace;\">Stack</span>\n" +
                 "        </div>\n" +
                 "        <div class=\"welcome-text\">\n" +
+                "            <h1>Hello , "+firstName+" !</h1>\n"+
                 "            <h1>Welcome to BlogStack!</h1>\n" +
                 "            <p>Thank you for registering on BlogStack. We are excited to have you on board.</p>\n" +
                 "            <p>Start sharing your thoughts, experiences, and knowledge with the community!</p>\n" +

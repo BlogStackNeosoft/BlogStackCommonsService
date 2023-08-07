@@ -17,9 +17,9 @@ public class BlogStackEmailController {
     private IBlogStackEmailService blogStackEmailService;
 
     @PostMapping()
-    public void sendMessage(@RequestParam(value = "to")String to ){
+    public void sendMessage(@RequestParam(value = "to")String to , @RequestParam(value = "firstName") String firstName ){
         String body = "Thank you for Signing up with BlogStack";
-         blogStackEmailService.sendSignupMail(to);
+         blogStackEmailService.sendSignupMail(to , firstName);
     }
     @PostMapping("/otp")
     public void sendOTP(@RequestParam(value = "to") String to,@RequestParam(value = "OTP")String otp){
