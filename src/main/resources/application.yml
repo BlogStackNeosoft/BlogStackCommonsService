@@ -16,3 +16,18 @@ spring:
     show-sql: true
 
 commons-service-version: v1.0
+
+cloud:
+  aws:
+    credentials:
+      access-key: AKIAXFYS2UY4HNPCI35G
+      secret-key: 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
+    region:
+      static: us-east-1
+    stack:
+      auto: false
+
+application:
+  bucket:
+    profile: blogstackprofilephoto
+    blog: blogstack-upload-blog-image
