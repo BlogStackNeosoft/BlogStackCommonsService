@@ -6,7 +6,7 @@ spring:
     name: BlogStackCommonsService
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/BlogStackMaster
+    url: jdbc:postgresql://ec2-3-110-224-124.ap-south-1.compute.amazonaws.com:5432/blogstackcommons
     username: postgres
     password: root
 
@@ -15,4 +15,16 @@ spring:
       ddl-auto: update
     show-sql: true
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: blogstack12@gmail.com
+    password: vlmferrarejnclku
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 commons-service-version: v1.0
+
