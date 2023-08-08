@@ -5,7 +5,6 @@ import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.blogstack.commons.BlogStackCommonConstants;
 import com.blogstack.service.IBlogStackFileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,12 +22,6 @@ public class BlogStackFileUploadService implements IBlogStackFileUploadService {
     @Autowired
     private AmazonS3 s3Client;
 
-    @Value("${application.bucket.profile}")
-    private String bucketNameProfile;
-
-    @Value("${application.bucket.blog}")
-    private String bucketNameBlog;
-
     @Override
     public ResponseEntity<File> convertMultiPartFileToFile(MultipartFile blogStackBlogImage) throws FileNotFoundException, IOException {
         FileOutputStream fileOutputStream = null;
@@ -45,11 +38,11 @@ public class BlogStackFileUploadService implements IBlogStackFileUploadService {
     }
 
     @Override
-    public ResponseEntity<String> uploadFile(MultipartFile blogStackProfilePhoto) throws IOException {
+    public ResponseEntity<String> uploadFile(MultipartFile blogStackProfilePhoto,String bucketName) throws IOException {
         ResponseEntity<File> convertedFile = convertMultiPartFileToFile(blogStackProfilePhoto);
         String fileName = System.currentTimeMillis() + BlogStackCommonConstants.INSTANCE.UNDERSCORE_STRING + blogStackProfilePhoto.getOriginalFilename();
-        s3Client.putObject(new PutObjectRequest(bucketNameProfile, fileName, convertedFile.getBody()));
-        URL url = s3Client.getUrl(bucketNameProfile, fileName);
+        s3Client.putObject(new PutObjectRequest(bucketName, fileName, convertedFile.getBody()));
+        URL url = s3Client.getUrl(bucketName, fileName);
         return ResponseEntity.ok(url.toString());
     }
 
@@ -57,8 +50,9 @@ public class BlogStackFileUploadService implements IBlogStackFileUploadService {
 //    public ResponseEntity<String> uploadFile(MultipartFile blogStackProfilePhoto) throws IOException {
 //        ResponseEntity<File> convertedFile = convertMultiPartFileToFile(blogStackProfilePhoto);
 //        String fileName = System.currentTimeMillis() + BlogStackCommonConstants.INSTANCE.UNDERSCORE_STRING + blogStackProfilePhoto.getOriginalFilename();
-//        s3Client.putObject(new PutObjectRequest(bucketName, fileName, convertedFile.getBody()));
-//        URL url = s3Client.getUrl(bucketName, fileName);
+//        s3Client.putObject(new PutObjectRequest(bucketNameProfile, fileName, convertedFile.getBody()));
+//        URL url = s3Client.getUrl(bucketNameProfile, fileName);
 //        return ResponseEntity.ok(url.toString());
 //    }
+
 }

@@ -10,5 +10,5 @@ import java.io.IOException;
 public interface IBlogStackFileUploadService {
     ResponseEntity<File> convertMultiPartFileToFile(MultipartFile file) throws FileNotFoundException, IOException;
 
-    ResponseEntity<String> uploadFile(MultipartFile file) throws IOException;
+    ResponseEntity<String> uploadFile(MultipartFile file, String bucketName) throws IOException;
 }

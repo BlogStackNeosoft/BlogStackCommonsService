@@ -20,10 +20,10 @@ commons-service-version: v1.0
 cloud:
   aws:
     credentials:
-      access-key: AKIAXFYS2UY4HNPCI35G
-      secret-key: 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
+      access-key: AKIAXFYS2UY4HECCOTYR
+      secret-key: 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
     region:
-      static: us-east-1
+      static: ap-south-1
     stack:
       auto: false
 

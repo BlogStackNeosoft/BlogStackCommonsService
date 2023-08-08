@@ -18,7 +18,7 @@ public class BlogStackFileUploadController {
     private final IBlogStackFileUploadService blogStackFileUploadService;
 
     @PutMapping("/")
-    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file) throws IOException {
-        return this.blogStackFileUploadService.uploadFile(file);
+    public ResponseEntity<String> uploadFile(@RequestParam(value = "file") MultipartFile file, @RequestParam(value = "bucketName") String bucketName) throws IOException {
+        return this.blogStackFileUploadService.uploadFile(file, bucketName);
     }
 }
