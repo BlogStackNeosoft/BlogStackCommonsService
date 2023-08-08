@@ -27,4 +27,18 @@ spring:
           starttls:
             enable: true
 commons-service-version: v1.0
+cloud:
+  aws:
+    credentials:
+      access-key: AKIAXFYS2UY4HECCOTYR
+      secret-key: 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
+    region:
+      static: ap-south-1
+    stack:
+      auto: false
+
+application:
+  bucket:
+    profile: blogstackprofilephoto
+    blog: blogstack-upload-blog-image
 
