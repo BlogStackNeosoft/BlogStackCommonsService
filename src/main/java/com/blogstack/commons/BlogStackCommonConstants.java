@@ -9,6 +9,8 @@ public enum BlogStackCommonConstants {
 
     public final String SPACE_STRING = " ";
 
+    public final String UNDERSCORE_STRING = "_";
+
     public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     public final String SERVICE_STRING = "Service";
